@@ -88,10 +88,7 @@ export function Sidebar() {
   const { totalMealsSaved, recommendations, resetDemo } = useStore()
   const pendingCount = recommendations.filter(r => !r.executed).length
 
-  const dollarValue = (totalMealsSaved * 1.2 * 1.93).toLocaleString(undefined, {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  })
+  const dollarValue = Math.round(totalMealsSaved * 1.2 * 1.93).toLocaleString()
 
   return (
     <aside className="w-60 bg-nav border-r border-edge h-screen fixed left-0 top-0 flex flex-col z-10" style={{ boxShadow: '1px 0 3px rgba(0,0,0,0.04)' }}>

@@ -30,7 +30,7 @@ export default function CoordinatorPage() {
               <Link href="/dashboard" className="text-xs hover:underline" style={{ color: '#64748b' }}>&larr; Back</Link>
               <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#6366F1' }} />
               <span className="font-semibold text-sm" style={{ color: '#0f172a' }}>Coordinator Console</span>
-              <span className="text-xs" style={{ color: '#94a3b8' }}>Central Warehouse</span>
+              <span className="text-xs" style={{ color: '#94a3b8' }}>Main Warehouse</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full" style={{ background: '#16A34A' }} />

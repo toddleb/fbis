@@ -161,19 +161,6 @@ export default function IntakePage() {
               ))}
             </select>
           </label>
-
-          <label className="block">
-            <span className="text-[11px] uppercase tracking-wider text-muted mb-1.5 block">
-              Donation Source
-            </span>
-            <input
-              type="text"
-              value={form.source}
-              onChange={set('source')}
-              placeholder="e.g. Kroger Donation"
-              className="input-field"
-            />
-          </label>
         </div>
 
         <div className="grid grid-cols-2 gap-5">
@@ -188,6 +175,19 @@ export default function IntakePage() {
                 </option>
               ))}
             </select>
+          </label>
+
+          <label className="block">
+            <span className="text-[11px] uppercase tracking-wider text-muted mb-1.5 block">
+              Donation Source
+            </span>
+            <input
+              type="text"
+              value={form.source}
+              onChange={set('source')}
+              placeholder="e.g. Fry's Food, Bashas'"
+              className="input-field"
+            />
           </label>
         </div>
 

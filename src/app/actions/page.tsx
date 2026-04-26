@@ -113,9 +113,14 @@ function ActionCard({
         </div>
 
         <div className="flex flex-col items-end gap-3 flex-shrink-0">
-          <span className="text-accent text-sm font-mono font-semibold whitespace-nowrap">
-            ~{rec.impactMeals.toLocaleString()} meals
-          </span>
+          <div className="text-right">
+            <span className="text-accent text-sm font-mono font-semibold whitespace-nowrap">
+              ~{rec.impactMeals.toLocaleString()} meals
+            </span>
+            <p className="text-muted text-[10px] font-mono mt-0.5">
+              (${rec.impactDollars.toLocaleString()})
+            </p>
+          </div>
           <button
             onClick={() => onExecute(rec.id, rec.lotId, rec.impactMeals)}
             className="bg-indigo/10 hover:bg-indigo/20 text-indigo text-[12px] font-medium px-4 py-2 rounded-lg transition-all cursor-pointer"

@@ -36,7 +36,7 @@ export default function DashboardPage() {
     {
       label: 'Meals Saved',
       value: totalMealsSaved.toLocaleString(),
-      sub: 'lives touched',
+      sub: 'from waste prevention',
       accent: 'text-accent',
       border: 'border-t-accent',
     },
@@ -56,7 +56,7 @@ export default function DashboardPage() {
       <div className="flex items-end justify-between mb-8">
         <div>
           <h1 className="text-heading text-xl font-semibold">Dashboard</h1>
-          <p className="text-muted text-sm mt-0.5">Inventory risk overview</p>
+          <p className="text-muted text-sm mt-0.5">Flagstaff Family Food Center — Inventory risk overview</p>
         </div>
         <p className="text-muted text-xs font-mono">
           {new Date().toLocaleDateString('en-US', {
@@ -321,7 +321,7 @@ function RiskRow({ lot }: { lot: RiskLot }) {
         <p className="text-muted text-[11px]">{lot.location}</p>
       </div>
       <span className="text-body text-xs font-mono">
-        {lot.quantity} {lot.unit}
+        {lot.quantity.toLocaleString()} {lot.unit}
       </span>
       <span
         className={`text-xs font-mono font-semibold min-w-[52px] text-right ${

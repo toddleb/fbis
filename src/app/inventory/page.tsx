@@ -125,7 +125,7 @@ export default function InventoryPage() {
                     {lot.daysToExpire}d
                   </td>
                   <td className="px-5 py-3 text-muted text-xs">{lot.location}</td>
-                  <td className="px-5 py-3 text-muted text-xs">{lot.source}</td>
+                  <td className="px-5 py-3 text-muted text-xs max-w-[140px] truncate">{lot.source}</td>
                   <td className="px-5 py-3 text-muted font-mono text-xs">
                     {new Date(lot.receivedDate).toLocaleDateString('en-US', {
                       month: 'short',
