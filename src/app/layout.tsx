@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Outfit, IBM_Plex_Mono } from 'next/font/google'
 import { StoreProvider } from '@/lib/store'
-import { Sidebar } from '@/components/Sidebar'
+import { ToastProvider } from '@/components/Toast'
+import { Shell } from '@/components/Shell'
 import './globals.css'
 
 const outfit = Outfit({
@@ -44,10 +45,11 @@ export default function RootLayout({
     <html lang="en" className={`${outfit.variable} ${ibmPlexMono.variable}`}>
       <body className="font-sans antialiased">
         <StoreProvider>
-          <Sidebar />
-          <main className="ml-60 min-h-screen p-6 lg:p-8">
-            {children}
-          </main>
+          <ToastProvider>
+            <Shell>
+              {children}
+            </Shell>
+          </ToastProvider>
         </StoreProvider>
       </body>
     </html>

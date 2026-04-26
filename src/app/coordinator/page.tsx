@@ -2,12 +2,14 @@
 
 import Link from 'next/link'
 import { useStore } from '@/lib/store'
+import { useToast } from '@/components/Toast'
 import { TabletFrame } from '@/components/TabletFrame'
 import { LOCATIONS } from '@/lib/data'
 import { HER_COLORS } from '@/lib/types'
 
 export default function CoordinatorPage() {
   const { riskLots, stats, recommendations, executeAction, totalMealsSaved, distributionCount, herStats } = useStore()
+  const toast = useToast()
 
   const criticalLots = riskLots.filter(l => l.riskLevel === 'critical')
   const warningLots = riskLots.filter(l => l.riskLevel === 'warning')
@@ -177,7 +179,10 @@ export default function CoordinatorPage() {
                           {rec.urgency}
                         </span>
                         <button
-                          onClick={() => executeAction(rec.id, rec.lotId, rec.impactMeals)}
+                          onClick={() => {
+                            executeAction(rec.id, rec.lotId, rec.impactMeals)
+                            toast('Action executed', `~${rec.impactMeals.toLocaleString()} meals saved`)
+                          }}
                           className="text-[10px] font-medium px-3 py-1 rounded cursor-pointer transition-colors"
                           style={{ background: '#4f46e5', color: '#ffffff' }}
                           onMouseEnter={e => (e.currentTarget.style.background = '#4338ca')}

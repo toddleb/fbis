@@ -76,6 +76,15 @@ main {
   animation: fade-up 0.4s ease-out both;
 }
 
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-toast-in {
+  animation: toast-in 0.3s ease-out both;
+}
+
 .animate-glow {
   animation: glow-pulse 3s ease-in-out infinite;
 }

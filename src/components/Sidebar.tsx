@@ -83,7 +83,7 @@ const OPS_ITEMS = [
   },
 ]
 
-export function Sidebar() {
+export function Sidebar({ mobileOpen, onClose }: { mobileOpen?: boolean; onClose?: () => void }) {
   const pathname = usePathname()
   const { totalMealsSaved, recommendations, resetDemo } = useStore()
   const pendingCount = recommendations.filter(r => !r.executed).length
@@ -91,8 +91,23 @@ export function Sidebar() {
   const dollarValue = Math.round(totalMealsSaved * 1.2 * 1.93).toLocaleString()
 
   return (
-    <aside className="w-60 bg-nav border-r border-edge h-screen fixed left-0 top-0 flex flex-col z-10" style={{ boxShadow: '1px 0 3px rgba(0,0,0,0.04)' }}>
+    <aside
+      className={`w-60 bg-nav border-r border-edge h-screen fixed left-0 top-0 flex flex-col z-40 transition-transform duration-300 ${mobileOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}
+      style={{ boxShadow: '1px 0 3px rgba(0,0,0,0.04)' }}
+    >
       <div className="px-5 pt-6 pb-4">
+        <div className="flex items-center gap-2.5">
+          {onClose && (
+            <button
+              className="lg:hidden absolute top-4 right-3 w-8 h-8 flex items-center justify-center rounded-lg text-muted hover:text-heading hover:bg-surface transition-colors cursor-pointer"
+              onClick={onClose}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                <path d="M4 4l8 8M12 4l-8 8" />
+              </svg>
+            </button>
+          )}
+        </div>
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-lg bg-indigo/15 flex items-center justify-center">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

@@ -2,11 +2,13 @@
 
 import { useState, type FormEvent } from 'react'
 import { useStore } from '@/lib/store'
+import { useToast } from '@/components/Toast'
 import { Category, Lot, CATEGORY_LABELS, HerRating, HER_LABELS, DEFAULT_HER_RATING } from '@/lib/types'
 import { LOCATIONS } from '@/lib/data'
 
 export default function IntakePage() {
   const { addLot, nextLotSeq } = useStore()
+  const toast = useToast()
   const [success, setSuccess] = useState(false)
 
   const [form, setForm] = useState({
@@ -38,6 +40,7 @@ export default function IntakePage() {
     }
 
     addLot(lot)
+    toast('Lot created', `${lot.itemName} · ${lot.quantity} ${lot.unit} → ${lot.location}`)
     setSuccess(true)
     setForm({
       itemName: '',

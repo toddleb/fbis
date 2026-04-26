@@ -1,11 +1,13 @@
 'use client'
 
 import { useStore } from '@/lib/store'
+import { useToast } from '@/components/Toast'
 import { RiskLot, HER_COLORS, HER_LABELS, HerRating } from '@/lib/types'
 import Link from 'next/link'
 
 export default function DashboardPage() {
   const { stats, riskLots, recommendations, executeAction, totalMealsSaved, equity, herStats } = useStore()
+  const toast = useToast()
 
   const criticalLots = riskLots.filter(l => l.riskLevel === 'critical')
   const warningLots = riskLots.filter(l => l.riskLevel === 'warning')
@@ -186,7 +188,10 @@ export default function DashboardPage() {
                       </span>
                     </div>
                     <button
-                      onClick={() => executeAction(rec.id, rec.lotId, rec.impactMeals)}
+                      onClick={() => {
+                        executeAction(rec.id, rec.lotId, rec.impactMeals)
+                        toast('Action executed', `~${rec.impactMeals.toLocaleString()} meals saved · $${rec.impactDollars.toLocaleString()} value`)
+                      }}
                       className="text-[11px] font-medium text-indigo bg-indigo/10 hover:bg-indigo/20 px-3 py-1.5 rounded-md transition-colors cursor-pointer"
                     >
                       Execute

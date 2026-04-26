@@ -1,6 +1,7 @@
 'use client'
 
 import { useStore } from '@/lib/store'
+import { useToast } from '@/components/Toast'
 import { Recommendation } from '@/lib/types'
 
 export default function ActionsPage() {
@@ -85,6 +86,7 @@ function ActionCard({
   onExecute: (id: string, lotId: string, meals: number) => void
   delay: number
 }) {
+  const toast = useToast()
   return (
     <div
       className="bg-panel rounded-xl border border-edge hover:border-indigo/30 p-5 transition-all duration-200 animate-fade-up shadow-sm"
@@ -122,7 +124,10 @@ function ActionCard({
             </p>
           </div>
           <button
-            onClick={() => onExecute(rec.id, rec.lotId, rec.impactMeals)}
+            onClick={() => {
+              onExecute(rec.id, rec.lotId, rec.impactMeals)
+              toast('Action executed', `~${rec.impactMeals.toLocaleString()} meals saved · $${rec.impactDollars.toLocaleString()} value`)
+            }}
             className="bg-indigo/10 hover:bg-indigo/20 text-indigo text-[12px] font-medium px-4 py-2 rounded-lg transition-all cursor-pointer"
           >
             Execute Action
