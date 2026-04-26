@@ -1,26 +1,105 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: #f1f5f9;
+  --color-panel: #ffffff;
+  --color-panel-hover: #f8fafc;
+  --color-edge: #e2e8f0;
+  --color-nav: #ffffff;
+  --color-heading: #0f172a;
+  --color-body: #334155;
+  --color-muted: #94a3b8;
+  --color-critical: #DC2626;
+  --color-warn: #D97706;
+  --color-safe: #16A34A;
+  --color-indigo: #4f46e5;
+  --color-accent: #ea580c;
+  --color-her-green: #16A34A;
+  --color-her-yellow: #CA8A04;
+  --color-her-red: #DC2626;
+  --font-sans: var(--font-outfit);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-edge) transparent;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface);
+  color: var(--color-body);
+}
+
+main {
+  background:
+    radial-gradient(ellipse at 85% 0%, rgba(79, 70, 229, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 0% 100%, rgba(234, 88, 12, 0.03) 0%, transparent 50%);
+}
+
+/* Form inputs */
+.input-field {
+  width: 100%;
+  background: var(--color-panel);
+  border: 1px solid var(--color-edge);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-heading);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.input-field::placeholder {
+  color: var(--color-muted);
+}
+.input-field:focus {
+  border-color: rgba(79, 70, 229, 0.5);
+}
+.input-field option {
+  background: var(--color-panel);
+  color: var(--color-heading);
+}
+
+/* Animations */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(234, 88, 12, 0.1), inset 0 0 15px rgba(234, 88, 12, 0.02); }
+  50% { box-shadow: 0 0 25px rgba(234, 88, 12, 0.18), inset 0 0 20px rgba(234, 88, 12, 0.04); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.4s ease-out both;
+}
+
+.animate-glow {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.delay-1 { animation-delay: 50ms; }
+.delay-2 { animation-delay: 100ms; }
+.delay-3 { animation-delay: 150ms; }
+.delay-4 { animation-delay: 200ms; }
+.delay-5 { animation-delay: 250ms; }
+.delay-6 { animation-delay: 300ms; }
+.delay-7 { animation-delay: 350ms; }
+.delay-8 { animation-delay: 400ms; }
+
+/* Tablet frame */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.animate-spin { animation: spin 1s linear infinite; }
+
+/* Print styles for Reports page */
+@media print {
+  aside, .no-print { display: none !important; }
+  main { margin-left: 0 !important; padding: 0 !important; background: white !important; }
+  body { background: white !important; }
+  .print-break { page-break-before: always; }
+  @page { margin: 0.75in; }
 }

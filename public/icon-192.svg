@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="32" fill="#4f46e5"/>
+  <path d="M96 40L50 64v64l46 24 46-24V64L96 40z" fill="none" stroke="#fff" stroke-width="6"/>
+  <path d="M50 64l46 24 46-24" fill="none" stroke="#fff" stroke-width="4" opacity="0.7"/>
+  <path d="M96 88v52" fill="none" stroke="#fff" stroke-width="4" opacity="0.7"/>
+  <text x="96" y="170" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="20" font-weight="700">FBIS</text>
+</svg>
